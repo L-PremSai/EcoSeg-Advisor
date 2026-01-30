@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoSeg Advisor - AI-Powered Waste Segregation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>🌱 EcoSeg Advisor</h1>
+                <p>AI-Powered Waste Segregation for Sustainable Cities</p>
+            </div>
+            <div class="sdg-badge">
+                <span>UN SDG 12</span>
+                <small>Responsible Consumption & Production</small>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="input-section">
+                <h2>What waste item do you need help with?</h2>
+                
+                <form id="wasteForm">
+                    <div class="form-group">
+                        <label for="wasteItem">Describe your waste item:</label>
+                        <input 
+                            type="text" 
+                            id="wasteItem" 
+                            placeholder="e.g., empty plastic bottle with label, kitchen vegetable peels, old mobile phone"
+                            required
+                        >
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city">Select your city (optional):</label>
+                        <select id="city">
+                            <option value="general">General Guidelines</option>
+                            <option value="hyderabad">Hyderabad</option>
+                            <option value="mumbai">Mumbai</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="bangalore">Bangalore</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" id="classifyBtn">
+                        <span>🔍 Check Waste Category</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Results Section -->
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <h3>Segregation Advice</h3>
+                
+                <div class="result-grid">
+                    <div class="result-card category">
+                        <h4>📋 Waste Category</h4>
+                        <p id="wasteCategory"></p>
+                    </div>
+                    
+                    <div class="result-card bin">
+                        <h4>🗑️ Bin Color</h4>
+                        <p id="binColor"></p>
+                    </div>
+                    
+                    <div class="result-card preparation">
+                        <h4>🧹 Preparation</h4>
+                        <p id="preparation"></p>
+                    </div>
+                    
+                    <div class="result-card disposal">
+                        <h4>♻️ Disposal Guidance</h4>
+                        <p id="disposal"></p>
+                    </div>
+                </div>
+                
+                <div class="reasoning-section">
+                    <h4>🤖 AI Reasoning</h4>
+                    <p id="reasoning"></p>
+                </div>
+                
+                <div class="citation-section">
+                    <h4>📜 Policy Reference</h4>
+                    <p id="citation"></p>
+                </div>
+                
+                <div class="sdg-info">
+                    <h4>🌍 Sustainability Impact</h4>
+                    <p>This segregation supports <strong>UN SDG 12: Responsible Consumption and Production</strong> by promoting proper waste management, reducing environmental impact, and supporting circular economy principles.</p>
+                </div>
+            </div>
+
+            <!-- Clarification Section -->
+            <div class="clarification-section" id="clarificationSection" style="display: none;">
+                <h3>❓ Need More Information</h3>
+                <p id="clarificationQuestion"></p>
+                <button id="tryAgainBtn">Try Again with More Details</button>
+            </div>
+
+            <!-- Loading State -->
+            <div class="loading" id="loading" style="display: none;">
+                <div class="spinner"></div>
+                <p>Analyzing your waste item...</p>
+            </div>
+        </main>
+
+        
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
